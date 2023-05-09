@@ -5,15 +5,15 @@ import javax.sql.DataSource
 
 class DualDataBase<T : Any>(
     private val writeConnect: DBConnect,
-    private val readConnect: DBConnect?,
+    private val readConnect: DBConnect? = null,
     val databaseConnection: (datasource: DataSource) -> T
 ) {
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    var readDataBase: T? = null
+    var readDataBase: T
         private set
-    var writeDataBase: T? = null
+    var writeDataBase: T
         private set
 
     init {
