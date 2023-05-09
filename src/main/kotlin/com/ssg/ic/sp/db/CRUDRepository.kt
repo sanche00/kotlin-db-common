@@ -4,7 +4,7 @@ import com.ssg.ic.sp.db.model.Entity
 import java.util.stream.Stream
 import kotlin.streams.toList
 
-interface Repository<T : Entity<ID>, ID> {
+interface CRUDRepository<T : Entity<ID>, ID> {
 
     fun findById(id: ID): T?
 
