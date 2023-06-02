@@ -4,14 +4,14 @@
 
     <groupId>com.ssg.ic.sp</groupId>
     <artifactId>kotlin-db-common</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>0.0.1</version>
     <packaging>jar</packaging>
 
     <name>kotlin-db-common</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kotlin.version>1.8.20</kotlin.version>
+        <kotlin.version>1.7.21</kotlin.version>
         <kotlin.code.style>official</kotlin.code.style>
         <junit.version>4.13.1</junit.version>
         <logback_version>1.2.11</logback_version>
@@ -22,6 +22,18 @@
         <postgres_version>42.5.1</postgres_version>
         <h2_version>2.1.214</h2_version>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <url>http://10.253.11.197:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>nexus</id>
+            <url>http://10.253.11.197:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
+
 
     <dependencies>
 
@@ -83,30 +95,6 @@
         </dependency>
 
         <dependency>
-            <groupId>org.jetbrains.exposed</groupId>
-            <artifactId>exposed-core</artifactId>
-            <version>${exposed_version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jetbrains.exposed</groupId>
-            <artifactId>exposed-java-time</artifactId>
-            <version>${exposed_version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jetbrains.exposed</groupId>
-            <artifactId>exposed-dao</artifactId>
-            <version>${exposed_version}</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.jetbrains.exposed</groupId>
-            <artifactId>exposed-jdbc</artifactId>
-            <version>${exposed_version}</version>
-        </dependency>
-
-        <dependency>
             <groupId>org.ehcache</groupId>
             <artifactId>ehcache</artifactId>
             <version>${ehcache.version}</version>
@@ -123,6 +111,15 @@
             <artifactId>kotlin-stdlib</artifactId>
             <version>${kotlin.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core -->
+        <!-- https://mvnrepository.com/artifact/org.jetbrains.kotlinx/kotlinx-coroutines-core-jvm -->
+        <dependency>
+            <groupId>org.jetbrains.kotlinx</groupId>
+            <artifactId>kotlinx-coroutines-core-jvm</artifactId>
+            <version>1.6.4</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.jetbrains.kotlinx</groupId>
             <artifactId>kotlinx-coroutines-debug</artifactId>

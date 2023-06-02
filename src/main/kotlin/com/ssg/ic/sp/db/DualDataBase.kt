@@ -6,19 +6,19 @@ import javax.sql.DataSource
 class DualDataBase<T : Any>(
     private val writeConnect: DBConnect,
     private val readConnect: DBConnect? = null,
-    val databaseConnection: (datasource: DataSource) -> T
-) {
+    override val databaseConnection: (datasource: DataSource) -> T,
+) : BasicDatabase<T>{
 
     private val logger = LoggerFactory.getLogger(this::class.java)
 
-    var readDataBase: T
+    var ss:T? = null
         private set
-    var writeDataBase: T
-        private set
-
     init {
-        writeDataBase = writeConnect.database(databaseConnection)
-        readDataBase = readConnect?.database(databaseConnection) ?: writeDataBase
+        writeConnect.database(databaseConnection).also { writeDataBase = it }
+        (readConnect?.database(databaseConnection) ?: writeDataBase).also { readDataBase = it }
     }
+
+    override var readDataBase: T
+    override var writeDataBase: T
 
 }
